@@ -17,7 +17,8 @@ var v1 = new blynk.VirtualPin(1);
 var v2 = new blynk.VirtualPin(2);
 var v3 = new blynk.VirtualPin(3);
 var v4 = new blynk.VirtualPin(4);
-
+var v5 = new blynk.VirtualPin(5);
+var v6 = new blynk.VirtualPin(6);
 
 var table_one = [0, 255,0];
 sense.Leds.clear();
@@ -70,7 +71,7 @@ v3.on('read', function() {
 // v4 write call back
 v4.on('write', function(param) {
      if(param == 1){
-        process.exec('python cameratest.py', function (err, stdout, stderr){
+        process.exec('python3 camerastill.py', function (err, stdout, stderr){
 	  if (err) {
 		console.log("\n" + stderr);
 	} else {
@@ -80,5 +81,37 @@ v4.on('write', function(param) {
 }
 });
 
+// v5 write call back
+v5.on('write', function(param) {
+     if(param == 1){
+        process.exec('python3 cameravideo.py', function (err, stdout, stderr){
+	  if (err) {
+		console.log("\n" + stderr);
+	} else {
+		console.log(stdout);
+	}
+	})
+}
+});
 
+// v6 write call back
+v6.on('write', function(param) {
+     if(param == 1){
+        process.exec('python3 camera.py', function (err, stdout, stderr){
+	  if (err) {
+		console.log("\n" + stderr);
+	} else {
+	process.kill();
+}
+	})
+}
+});
+
+// v6 write call back
+v6.on('write', function(param) {
+     if(param == 0){
+        process.kill();
+	
+}
+});
 
