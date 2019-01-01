@@ -1,8 +1,7 @@
-import time
+from time import sleep
 from wia import Wia
 from sense_hat import SenseHat
 sense = SenseHat()
-
 
 wia = Wia()
 wia.access_token = "d_sk_t0tGXNU1iCWyY5gYrKCWlzHU"
